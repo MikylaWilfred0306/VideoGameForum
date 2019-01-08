@@ -2,15 +2,15 @@
 //connect.php
 $server = '127.0.0.1';
 $username   = 'root';
-$password   = 'pass';
+$password   = '123password';
 $database   = 'forum';
- 
-if(!mysql_connect($server, $username,  $password))
+
+$connect = mysqli_connect($server, $username, $password, $database); 
+
+if (mysqli_connect_errno())
 {
-    exit('Error: could not establish database connection');
+echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-if(!mysql_select_db($database))
-{
-    exit('Error: could not select the database');
-}
+
+
 ?>

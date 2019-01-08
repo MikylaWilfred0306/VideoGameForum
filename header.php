@@ -8,18 +8,28 @@
     <meta name="keywords" content="put, keywords, here" />
     <title>Video Game Forum</title>
     <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div id="wrapper">
     <img src="img/Nintendo-banner.jpg">
     <div id="menu">
         <a class="item" href="index.php">Home</a> -
-        <a class="item" href="create_topic.php">Create a topic</a> -
         <a class="item" href="quiz.php">Take a quiz</a>
     
         <div id="userbar">
-            Hello, gamer! <a class="item" href="signup.php">Please create an account<a> -
-            <a class="item" href="login.php">Log in<a>
+        <?php
+            session_start();
+            if(!isset($_SESSION["userId"])){
+                echo 'Hello, gamer! <a class="item" href="signup.php">Please create an account</a>
+                <a class="item" href="login_page.inc.php">Log in</a>';
+            }
+            else{
+                echo 'Hello, '.$_SESSION["username"]." ";
+                echo '<a class="item" href="signout.php">Log out<a> ';
+                echo '<a class="item" href="user.php">Upload an image<a>';
+            }
+            ?>
         </div>
     </div>
     
